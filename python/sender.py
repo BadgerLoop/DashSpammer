@@ -2,7 +2,6 @@ import riffle
 import time
 import random
 
-riffle.SetFabricLocal()
 # riffle.SetLogLevelDebug()
 
 modules = ["BPM1", "BPM2", "MCM", "VCM", "ECM"]
@@ -22,6 +21,7 @@ class Send(riffle.Domain):
         	time.sleep(2)
 
 if __name__ == '__main__':
-    app = riffle.Domain("xs.demo.badgerloop")
-    Send("blapp", superdomain=app).join()
+    riffle.SetFabric(os.environ['WS_URL'])
+    domain = os.environ['DOMAIN']
+    Send(domain).join()
     exit()
