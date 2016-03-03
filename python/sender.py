@@ -14,11 +14,8 @@ class Send(riffle.Domain):
 
     def onJoin(self):
     	
-    	ID = 0
-
         while True:
-        	ID+=1
-        	self.publish("temp", {'module': random.choice(modules), 'data': str(random.random()), 'sensor': random.choice(sensors),'id': str(ID), 'type': random.choice(types), 'location': random.choice(locations)})
+        	self.publish("temp", {'module': random.choice(modules), 'data': str(random.randrange(0, 144)), 'sensor': random.choice(sensors),'id': str(ID), 'type': random.choice(types), 'location': random.choice(locations)})
         	time.sleep(2)
 
 if __name__ == '__main__':
